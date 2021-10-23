@@ -8,14 +8,14 @@ pipeline {
         // REGISTRY = withCredentials([vaultString(credentialsId: 'container-registry', variable: 'REGISTRY_NAME')])
         // REGISTRY_ACCOUNT = withCredentials([usernamePassword(credentialsId: 'container-registry-user', usernameVariable: 'REGISTRY_USER', passwordVariable: 'REGISTRY_PASS')])
         LOCAL_IMAGE = "ubuntu-shell:${BRANCH_NAME}"
-        REMOTE_IMAGE = "$REGISTRY_NAME/$REGISTRY_USER/$LOCAL_IMAGE"
+        REMOTE_IMAGE = "${REGISTRY_NAME}/${REGISTRY_USER}/${LOCAL_IMAGE}"
     }
     stages {
         stage ('Build docker image') {
             steps {
                 script {
                     echo "[STAGE] > Build docker image"
-                    dockerBuild ${LOCAL_IMAGE}, 'docker/Dockerfile', ['NEW_USER':'gabriele']
+                    dockerBuild "${LOCAL_IMAGE}", 'docker/Dockerfile', ['NEW_USER':'gabriele']
                 }
             }
         }
@@ -23,9 +23,9 @@ pipeline {
             steps {
                 script {
                     echo "[STAGE] > Push to container registry"
-                    dockerLogin $REGISTRY_NAME, 'container-registry-user'
-                    dockerTag $LOCAL_IMAGE $REMOTE_IMAGE
-                    dockerPush $REMOTE_IMAGE
+                    dockerLogin "${REGISTRY_NAME}", 'container-registry-user'
+                    dockerTag "${LOCAL_IMAGE}" "${REMOTE_IMAGE}"
+                    dockerPush "${REMOTE_IMAGE}"
                 }
             }
         }
@@ -33,8 +33,8 @@ pipeline {
             steps {
                 script {
                     echo "[STAGE] > Cleanup"
-                    dockerRmi $LOCAL_IMAGE
-                    dockerRmi $REMOTE_IMAGE
+                    dockerRmi "${LOCAL_IMAGE}"
+                    dockerRmi "${REMOTE_IMAGE}"
                 }
             }
         }
