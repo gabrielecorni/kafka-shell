@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     echo "[STAGE] > Build docker image"
-                    dockerBuild $LOCAL_IMAGE, 'docker/Dockerfile', ['NEW_USER':'gabriele']
+                    dockerBuild ${LOCAL_IMAGE}, 'docker/Dockerfile', ['NEW_USER':'gabriele']
                 }
             }
         }
