@@ -3,6 +3,7 @@ Docker image for a clean, empty ubuntu shell.
 
 Ref:
 + [GitHub Repo](https://github.com/gabrielecorni/ubuntu-shell)
++ [A friend's code](https://gitlab.com/moretto.tommaso/js-application-ci-cd/-/blob/jenkins-library/Jenkinsfile)
 
 ---
 
