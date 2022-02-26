@@ -18,7 +18,7 @@ WORKDIR /home/${NEW_USER}
 
 # definition of env variable to use within container
 # note: this is a demo env variable
-ENV UBUNTU_SHELL_NEW_USER=${NEW_USER}
+ENV SHELL_USER=${NEW_USER}
 
 # launch shell
 CMD ["bash"]

@@ -11,5 +11,6 @@ docker run \
     --rm \
     --name $CONTAINER_NAME \
     --hostname $CONTAINER_NAME \
-    --env MY_DEMO_VAR="$MY_DEMO_VAR" \
+    --env DATAGEN="$DATAGEN" \
+    --network host \
     $REMOTE_IMAGE
