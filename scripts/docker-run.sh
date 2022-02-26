@@ -1,5 +1,5 @@
 #!/bin/bash
-source scripts/conf-dev.sh
+source scripts/_conf.sh
 
 LOCAL_IMAGE=kafka-shell:master-latest
 REMOTE_IMAGE=$REGISTRY_NAME/$REGISTRY_USER/$LOCAL_IMAGE
