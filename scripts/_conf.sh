@@ -9,6 +9,6 @@ DATAGEN="pizza" # pizza | userbehaviour | stock | realstock | metric
 #   - rename it 
 #   - source it
 #   - don't put the copy under version control!
-REGISTRY_NAME=
-REGISTRY_USER=
+REGISTRY_NAME="docker.io"
+REGISTRY_USER="gabrielecorni"
 REGISTRY_PASS=
