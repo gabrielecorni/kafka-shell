@@ -1,4 +1,10 @@
-FROM ubuntu:20.04
+FROM openjdk:11
+
+# install kafka
+ADD https://dlcdn.apache.org/kafka/3.1.0/kafka_2.13-3.1.0.tgz .
+RUN tar -xzf ./kafka_2.13-3.1.0.tgz --directory /usr/local && \
+    rm -rf ./kafka_2.13-3.1.0.tgz
+ENV PATH="/usr/local/kafka_2.13-3.1.0/bin:$PATH"
 
 # parameter passed from `docker build` to use during build
 ARG NEW_USER
